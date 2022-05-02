@@ -6,14 +6,14 @@ function has(array,str){
     return (array.some(word => {return word.includes(str)}))
 }
 function dateTimeDifference(date1,date2,format){
-    if(new Date(date1) < new Date(date2)){
-        let temp = new Date(date1)
-        date1 = new Date(date2)
+    if(new Date(Date.parse(date1)) < new Date(Date.parse(date2))){
+        let temp = new Date(Date.parse(date1))
+        date1 = new Date(Date.parse(date2))
         date2 = temp
     }
     else{
-        date1 = new Date(date1)
-        date2 = new Date(date2)
+        date1 = new Date(Date.parse(date1))
+        date2 = new Date(Date.parse(date2))
     }
     switch(format){
         case 'milliseconds':return (date1-date2)/1000
