@@ -1,3 +1,4 @@
+//array check
 function has(array,str){
     if(!array || !str )
         return console.error('Didnt pass arguments')
@@ -5,6 +6,7 @@ function has(array,str){
         array = [array]
     return (array.some(word => {return word.includes(str)}))
 }
+//date comparison
 function dateTimeDifference(date1,date2,format){
     if(new Date(Date.parse(date1)) < new Date(Date.parse(date2))){
         let temp = new Date(Date.parse(date1))
@@ -25,21 +27,29 @@ function dateTimeDifference(date1,date2,format){
         default:return 'Invalid Format'
     }
 }
-module.exports = {has,dateTimeDifference}
+//rewrite json
+function reWriteJson(jsonfile,newData) {
+  const info = JSON.stringify(newData)
+  fs.writeFile(`${jsonfile}`, info, err=>{
+    if (err) throw err;
+    return{sucess:true,path:jsonfile}
+})
+}
+//write json
+function writeJson(jsonfile,newData) { 
+    var data = fs.readFileSync(jsonfile);
+    var obj = JSON.parse(data);
+    const rData = Object.assign(obj, newData);
+    fs.writeFile (`${jsonfile}`, JSON.stringify(rData), function(err) {
+        if (err) throw err;
+        return{sucess:true,path:jsonfile}
+        }
+    );
+}
+function editJson(jsonfile,Data,isMerge){
+    if(isMerge)
+        return reWriteJson(jsonfile,Data)
+    return writeJson(jsonfile,Data)
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+module.exports = {has,dateTimeDifference,reWriteJson,writeJson,editJson}
