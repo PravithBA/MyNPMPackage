@@ -22,6 +22,7 @@ function dateTimeDifference(date1,date2,format){
         case 'seconds':return (date1-date2)/(1000*60)
         case 'minutes':return (date1-date2)/(1000 * 60 * 60)
         case 'days':return (date1-date2)/(1000 * 60 * 60 * 24)
+        case 'weeks':return (date1-date2)/(1000 * 60 * 60 * 24 * 7)
         case 'months':return (date1.getMonth()-date2.getMonth())+((date1.getYear()-date2.getYear())*12)
         case 'years':return date1.getYear()-date2.getYear()
         default:return 'Invalid Format'
