@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/SingleSimha/myNpmPackage/issues"
   },
-  "homepage": "https://github.com/SingleSimha/myNpmPackage#readme"
+  "homepage": "https://github.com/SingleSimha/myNpmPackage#readme",
+  "dependencies": {
+    "fs": "0.0.1-security"
+  }
 }
