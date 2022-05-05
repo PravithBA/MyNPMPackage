@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/SingleSimha/myNpmPackage#readme",
   "dependencies": {
-    "fs": "0.0.1-security"
+    "fs": "0.0.1-security",
+    "smpljavascript": "^1.1.5"
   }
 }
