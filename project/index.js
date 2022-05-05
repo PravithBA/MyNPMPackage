@@ -46,6 +46,7 @@ function writeJson(jsonfile,newData) {
         }
     );
 }
+//edit json
 function editJson(jsonfile,Data,isMerge){
     if(isMerge)
         return reWriteJson(jsonfile,Data)
