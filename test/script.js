@@ -1,8 +1,9 @@
-const lol = require("smpljavascript")
+const {editJson} = require("smpljavascript")
 
 let newData = {
-    "Mat": "40"
+    "Mat": "40",
+    "LOLOL":"LOL"
 }
-// const jsonfile = ("/test.json")
+const jsonfile = ("./test.json")
 
-// reWriteJson(jsonfile,newData)
+editJson(jsonfile,newData)
