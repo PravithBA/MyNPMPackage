@@ -1,11 +1,10 @@
+const fs = require('fs')
+
 //array check
-function has(array,str){
-    if(!array || !str )
-        return console.error('Didnt pass arguments')
-    if(typeof array != 'array')
-        array = [array]
-    return (array.some(word => {return word.includes(str)}))
+function has(array,str){ 
+  return array.some(word => word.includes(str))
 }
+
 //date comparison
 function dateTimeDifference(date1,date2,format){
     if(new Date(Date.parse(date1)) < new Date(Date.parse(date2))){
@@ -28,30 +27,44 @@ function dateTimeDifference(date1,date2,format){
         default:return 'Invalid Format'
     }
 }
+
 //rewrite json
 function reWriteJson(jsonfile,newData) {
   const info = JSON.stringify(newData)
   fs.writeFile(`${jsonfile}`, info, err=>{
-    if (err) throw err;
-    return{sucess:true,path:jsonfile}
+ if(err){
+   console.log("Error while writing the file" ,err)
+ } else {
+   return 'Done'
+ }
 })
 }
+
 //write json
 function writeJson(jsonfile,newData) { 
-    var data = fs.readFileSync(jsonfile);
-    var obj = JSON.parse(data);
-    const rData = Object.assign(obj, newData);
-    fs.writeFile (`${jsonfile}`, JSON.stringify(rData), function(err) {
-        if (err) throw err;
-        return{sucess:true,path:jsonfile}
-        }
-    );
-}
-//edit json
-function editJson(jsonfile,Data,isMerge){
-    if(isMerge)
-        return reWriteJson(jsonfile,Data)
-    return writeJson(jsonfile,Data)
+
+var data = fs.readFileSync(jsonfile);
+var obj = JSON.parse(data);
+
+const rData = Object.assign(obj, newData);
+
+fs.writeFile (`${jsonfile}`, JSON.stringify(rData), function(err) {
+    if (err) throw err;
+    return 'Done'
+    }
+);
 }
 
-module.exports = {has,dateTimeDifference,reWriteJson,writeJson,editJson}
+//editJson
+function editJson(jsonfile,newData,isMerge){
+    if(isMerge)
+        return writeJson(jsonfile,newData)
+    return reWriteJson(jsonfile,newData)
+}
+
+function random(array) {
+    return array[Math.floor(Math.random() * array.length)];
+}
+
+module.exports = {has,dateTimeDifference,reWriteJson,writeJson,editJson,random}
+

@@ -1,9 +1,3 @@
-const {editJson} = require("smpljavascript")
+const smpljs = require('smpljavascript')
 
-let newData = {
-    "Mat": "40",
-    "LOLOL":"LOL"
-}
-const jsonfile = ("./test.json")
-
-editJson(jsonfile,newData)
+console.log(smpljs.random([1,2,343,536,7537,264]))
