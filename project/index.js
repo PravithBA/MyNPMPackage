@@ -62,9 +62,20 @@ function editJson(jsonfile,newData,isMerge){
     return reWriteJson(jsonfile,newData)
 }
 
+//get Random Array Element
 function random(array) {
     return array[Math.floor(Math.random() * array.length)];
 }
-
-module.exports = {has,dateTimeDifference,reWriteJson,writeJson,editJson,random}
+//shuffle elements
+function shuffle(array){
+    let newArr = []
+    let index
+    for(i = 0;i < array.length; i++){
+        index = Math.floor(Math.random() * array.length)
+        newArr.push(array[index])
+        array.splice(index, 0)
+    }    
+    return newArr
+}
+module.exports = {has,dateTimeDifference,reWriteJson,writeJson,editJson,random,shuffle}
 
