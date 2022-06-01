@@ -1,3 +1,3 @@
 const smpljs = require('../project/index')
 
-console.log(smpljs.shuffle([1,2,343,536,7537,264]))
+console.log("The generated id is:",smpljs.randomUniqIdGen(1))
